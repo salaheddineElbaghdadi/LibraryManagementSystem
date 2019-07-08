@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LibraryManagementSystem.Models.Library
 {
-    public class Professor : Client
+    public class Teacher : Client
     {
     }
 }

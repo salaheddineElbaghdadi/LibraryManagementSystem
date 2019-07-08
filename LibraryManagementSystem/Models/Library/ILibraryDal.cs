@@ -18,7 +18,13 @@ namespace LibraryManagementSystem.Models.Library
         List<Book> BookList();
 
         // Clients
-        void AddNewClient<ClientNature>(string firstName, string lastName, string CIN, string email);
+        void AddNewClient(Client client);
         void DeleteClient(int clientId);
+        Client GetClientById(int clientId);
+        bool IsClientStudent(Client client);
+        bool IsClientTeacher(Client client);
+        List<Client> ClientsList();
+        List<Student> GetAllStudents();
+        List<Teacher> GetAllTeachers();
     }
 }

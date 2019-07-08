@@ -85,14 +85,87 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Books.ToList();
         }
 
-        public void AddNewClient<ClientNature>(string firstName, string lastName, string CIN, string email)
+        /// <summary>
+        /// Add new client to the library
+        /// </summary>
+        /// <param name="client"></param>
+        public void AddNewClient(Client client)
         {
-            throw new NotImplementedException();
+            LibraryDb.Clients.Add(client);
+            LibraryDb.SaveChanges();
         }
 
+
+        /// <summary>
+        /// Remove client by id
+        /// </summary>
+        /// <param name="clientId">client id</param>
         public void DeleteClient(int clientId)
         {
-            throw new NotImplementedException();
+            Client client = GetClientById(clientId);
+            LibraryDb.Clients.Remove(client);
+            LibraryDb.SaveChanges();
+        }
+
+        /// <summary>
+        /// Get client using id
+        /// </summary>
+        /// <param name="clientId">client id</param>
+        /// <returns></returns>
+        public Client GetClientById(int clientId)
+        {
+            return LibraryDb.Clients.First(c => c.Id == clientId);
+        }
+
+        /// <summary>
+        /// check if the client is a Stutend
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public bool IsClientStudent(Client client)
+        {
+            if (client is Student)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the client is a teacher
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public bool IsClientTeacher(Client client)
+        {
+            if (client is Teacher)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// return clients list
+        /// </summary>
+        /// <returns></returns>
+        public List<Client> ClientsList()
+        {
+            return LibraryDb.Clients.ToList();
+        }
+
+        /// <summary>
+        /// return all students in the clients list
+        /// </summary>
+        /// <returns></returns>
+        public List<Student> GetAllStudents()
+        {
+            return LibraryDb.Clients.OfType<Student>().ToList<Student>();
+        }
+
+        /// <summary>
+        /// return all teacher in the clients list
+        /// </summary>
+        /// <returns></returns>
+        public List<Teacher> GetAllTeachers()
+        {
+            return LibraryDb.Clients.OfType<Teacher>().ToList<Teacher>();
         }
 
         #region IDisposable Support
