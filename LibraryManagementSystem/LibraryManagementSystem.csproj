@@ -161,6 +161,7 @@
     <Compile Include="Models\Library\Client.cs" />
     <Compile Include="Models\Library\ILibraryDal.cs" />
     <Compile Include="Models\Library\LibraryContext.cs" />
+    <Compile Include="Models\Library\LibraryDal.cs" />
     <Compile Include="Models\Library\Professor.cs" />
     <Compile Include="Models\Library\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

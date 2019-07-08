@@ -8,6 +8,12 @@ namespace LibraryManagementSystem.Models.Library
 {
     public class LibraryContext : DbContext
     {
+        public LibraryContext() : base()
+        {
+
+        }
+        
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Client> Clients { get; set; }
     }
