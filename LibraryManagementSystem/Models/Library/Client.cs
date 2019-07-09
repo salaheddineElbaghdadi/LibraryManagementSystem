@@ -17,6 +17,6 @@ namespace LibraryManagementSystem.Models.Library
         /// <summary>
         /// Books borrowed by this client
         /// </summary>
-        public virtual IEnumerable<Book> Books { get; set; }
+        public virtual ICollection<ClientBook> Loans { get; set; }
     }
 }

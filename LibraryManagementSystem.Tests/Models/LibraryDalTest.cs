@@ -127,5 +127,139 @@ namespace LibraryManagementSystem.Tests.Models
 
             Assert.AreEqual(books.Count, 0);
         }
+
+        [TestMethod]
+        public void AddNewClent_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            Teacher teacher = new Teacher()
+            {
+                FirstName = "TFN",
+                LastName = "TLN",
+                CIN = "BK343434",
+                Email = "teacher@gmail.com"
+            };
+
+            dal.AddNewClient(student);
+            dal.AddNewClient(teacher);
+
+            List<Client> clients = dal.ClientsList();
+
+            Assert.AreEqual(clients.Count, 2);
+        }
+
+        [TestMethod]
+        public void DeleteClient_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            dal.AddNewClient(student);
+            Assert.AreEqual(1, dal.ClientsList().Count);
+            dal.DeleteClient(student.Id);
+            Assert.AreEqual(0, dal.ClientsList().Count);
+        }
+
+        [TestMethod]
+        public void GetClientById_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            int id = student.Id;
+            Assert.AreEqual("SFN", dal.GetClientById(id).FirstName);
+        }
+
+        [TestMethod]
+        public void IsClientStudent_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            Client client = student;
+            Assert.IsTrue(dal.IsClientStudent(client));
+        }
+
+        [TestMethod]
+        public void IsClientTeacher_test()
+        {
+            Teacher teacher = new Teacher()
+            {
+                FirstName = "TFN",
+                LastName = "TLN",
+                CIN = "BK343434",
+                Email = "teacher@gmail.com"
+            };
+
+            Client client = teacher;
+            Assert.IsTrue(dal.IsClientTeacher(client));
+        }
+
+        [TestMethod]
+        public void ClientsList_test()
+        {
+
+        }
+
+        [TestMethod]
+        public void GetAllStudents_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            Teacher teacher = new Teacher()
+            {
+                FirstName = "TFN",
+                LastName = "TLN",
+                CIN = "BK343434",
+                Email = "teacher@gmail.com"
+            };
+
+            dal.AddNewClient(student);
+            dal.AddNewClient(teacher);
+
+            Assert.AreEqual(2, dal.ClientsList().Count);
+            List<Student> students = dal.GetAllStudents();
+            Assert.AreEqual(1, students.Count);
+            Assert.AreEqual(student.Id, students[0].Id);
+        }
+
+        [TestMethod]
+        public void GetAllTeachers_test()
+        {
+
+        }
     }
 }

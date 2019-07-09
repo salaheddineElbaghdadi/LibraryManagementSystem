@@ -168,6 +168,10 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Clients.OfType<Teacher>().ToList<Teacher>();
         }
 
+        public void AddLoan(Client client, Book book, DateTime duration)
+        {
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // Pour détecter les appels redondants
 

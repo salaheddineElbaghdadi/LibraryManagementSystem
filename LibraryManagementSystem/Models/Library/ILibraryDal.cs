@@ -26,5 +26,8 @@ namespace LibraryManagementSystem.Models.Library
         List<Client> ClientsList();
         List<Student> GetAllStudents();
         List<Teacher> GetAllTeachers();
+
+        // Loans
+        void AddLoan(Client client, Book book, DateTime duration);
     }
 }
