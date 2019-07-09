@@ -186,6 +186,7 @@ namespace LibraryManagementSystem.Tests.Models
                 Email = "student@gmail.com"
             };
 
+            dal.AddNewClient(student);
             int id = student.Id;
             Assert.AreEqual("SFN", dal.GetClientById(id).FirstName);
         }
@@ -260,6 +261,39 @@ namespace LibraryManagementSystem.Tests.Models
         public void GetAllTeachers_test()
         {
 
+        }
+
+        [TestMethod]
+        public void AddLoan_test()
+        {
+            Student student = new Student()
+            {
+                FirstName = "SFN",
+                LastName = "SLN",
+                CIN = "BK121212",
+                CNE = "12345",
+                Email = "student@gmail.com"
+            };
+
+            Book book = new Book()
+            {
+                ISBN = "1234567",
+                Title = "Book title",
+                TotalQuantity = 20
+            };
+
+            dal.AddNewClient(student);
+            dal.AddNewBook(book);
+
+            TimeSpan duration = new TimeSpan(15, 0, 0, 0);
+
+            // Adding the loan
+            dal.AddLoan(student, book, duration);
+
+            // Checking
+            //Assert.AreEqual(1, dal.LoansList().Count);
+            //Assert.AreEqual(1, book.Loans.Count);
+            //Assert.AreEqual(1, student.Loans.Count);
         }
     }
 }

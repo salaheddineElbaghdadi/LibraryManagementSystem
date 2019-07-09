@@ -10,6 +10,7 @@ namespace LibraryManagementSystem.Models.Library
     {
 
         // Books
+        void AddNewBook(Book book);
         void AddNewBook(string isbn, string title, int quantity);
         void DeleteBook(int bookId);
         Book GetBookById(int bookId);
@@ -28,6 +29,7 @@ namespace LibraryManagementSystem.Models.Library
         List<Teacher> GetAllTeachers();
 
         // Loans
-        void AddLoan(Client client, Book book, DateTime duration);
+        void AddLoan(Client client, Book book, TimeSpan duration);
+        List<ClientBook> LoansList();
     }
 }

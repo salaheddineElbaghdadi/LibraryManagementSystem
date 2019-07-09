@@ -10,9 +10,9 @@ namespace LibraryManagementSystem.Models.Library
     [Table("Loans")]
     public class ClientBook
     {
-        [Key]
+        [Key, Column(Order = 1)]
         public int ClientId { get; set; }
-        [Key]
+        [Key, Column(Order = 2)]
         public int BookId { get; set; }
         /// <summary>
         /// The date in witch the book was borrowed
@@ -22,15 +22,15 @@ namespace LibraryManagementSystem.Models.Library
         /// The duration that the client is allowed to have the loan
         /// Deadline
         /// </summary>
-        public DateTime LoanDuration { get; set; }
+        //public TimeSpan LoanDuration { get; set; }
         /// <summary>
         /// The date the client gave back the book
         /// This date may be different than the date that he is not supposed to exceede (deadline) 
         /// </summary>
-        public DateTime EndDate { get; set; }
+        //public DateTime EndDate { get; set; }
 
-        public virtual Client Client { get; set; }
-        public virtual Book Books { get; set; }
+        //public virtual Client Client { get; set; }
+        //public virtual Book Book { get; set; }
 
 
         public ClientBook()

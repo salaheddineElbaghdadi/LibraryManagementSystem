@@ -18,6 +18,14 @@ namespace LibraryManagementSystem.Models.Library
             LibraryDb = new LibraryContext();
         }
 
+        /// <summary>
+        /// Add a new book into the databse
+        /// </summary>
+        /// <param name="book">The instance of the book to add</param>
+        public void AddNewBook(Book book)
+        {
+            LibraryDb.Books.Add(book);
+        }
 
         /// <summary>
         /// Add a new book into the database
@@ -168,8 +176,26 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Clients.OfType<Teacher>().ToList<Teacher>();
         }
 
-        public void AddLoan(Client client, Book book, DateTime duration)
+        public void AddLoan(Client client, Book book, TimeSpan duration)
         {
+            ClientBook loan = new ClientBook
+            {
+                ClientId = client.Id,
+                BookId = book.Id,
+                //LoanDuration = duration,
+                //Client = client,
+                //Book = book,
+            };
+            client.Loans.Add(loan);
+            book.Loans.Add(loan);
+
+            LibraryDb.Loans.Add(loan);
+            LibraryDb.SaveChanges();
+        }
+
+        public List<ClientBook> LoansList()
+        {
+            return LibraryDb.Loans.ToList();
         }
 
         #region IDisposable Support
