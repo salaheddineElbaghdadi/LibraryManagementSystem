@@ -29,7 +29,7 @@ namespace LibraryManagementSystem.Models.Library
         List<Teacher> GetAllTeachers();
 
         // Loans
-        void AddLoan(Client client, Book book, TimeSpan duration);
+        void AddLoan(Client client, Book book, int duration);
         List<ClientBook> LoansList();
     }
 }

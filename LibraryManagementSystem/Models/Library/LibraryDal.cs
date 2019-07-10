@@ -176,13 +176,13 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Clients.OfType<Teacher>().ToList<Teacher>();
         }
 
-        public void AddLoan(Client client, Book book, TimeSpan duration)
+        public void AddLoan(Client client, Book book, int duration)
         {
             ClientBook loan = new ClientBook
             {
                 ClientId = client.Id,
                 BookId = book.Id,
-                //LoanDuration = duration,
+                LoanDuration = duration,
                 //Client = client,
                 //Book = book,
             };

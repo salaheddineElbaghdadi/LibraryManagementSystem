@@ -285,7 +285,7 @@ namespace LibraryManagementSystem.Tests.Models
             dal.AddNewClient(student);
             dal.AddNewBook(book);
 
-            TimeSpan duration = new TimeSpan(15, 0, 0, 0);
+            int duration = 15;              // 15 days
 
             // Adding the loan
             dal.AddLoan(student, book, duration);
