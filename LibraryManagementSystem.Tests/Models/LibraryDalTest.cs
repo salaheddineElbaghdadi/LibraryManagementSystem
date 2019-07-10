@@ -291,9 +291,9 @@ namespace LibraryManagementSystem.Tests.Models
             dal.AddLoan(student, book, duration);
 
             // Checking
-            //Assert.AreEqual(1, dal.LoansList().Count);
-            //Assert.AreEqual(1, book.Loans.Count);
-            //Assert.AreEqual(1, student.Loans.Count);
+            Assert.AreEqual(1, dal.LoansList().Count);
+            Assert.AreEqual(1, book.Loans.Count);
+            Assert.AreEqual(1, student.Loans.Count);
         }
     }
 }
