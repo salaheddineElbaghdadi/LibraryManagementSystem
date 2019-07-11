@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryManagementSystem.Models.Library
 {
@@ -17,11 +18,20 @@ namespace LibraryManagementSystem.Models.Library
         /// <summary>
         /// Books borrowed by this client
         /// </summary>
-        public virtual List<ClientBook> Loans { get; set; }
+        public virtual List<ClientBook> ClientBooks { get; set; }
+        /// <summary>
+        /// The Category of the client
+        /// </summary>
+        public int ClientCategoryId { get; set; }
+        public virtual ClientCategory Category { get; set; }
+        /// <summary>
+        /// Additional properties
+        /// </summary>
+        public virtual PropertyBag Properties { get; set; }
 
         public Client()
         {
-            Loans = new List<ClientBook>();
+            ClientBooks = new List<ClientBook>();
         }
     }
 }

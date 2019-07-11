@@ -29,11 +29,11 @@ namespace LibraryManagementSystem.Models.Library
         /// <summary>
         /// Clients borrowed the book
         /// </summary>
-        public virtual List<ClientBook> Loans { get; set; }
+        public virtual List<ClientBook> ClientBooks { get; set; }
 
         public Book()
         {
-            Loans = new List<ClientBook>();
+            ClientBooks = new List<ClientBook>();
         }
     }
 }

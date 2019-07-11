@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryManagementSystem.Models.Library
 {
-    [Table("Loans")]
     public class ClientBook
     {
         [Key, Column(Order = 0)]

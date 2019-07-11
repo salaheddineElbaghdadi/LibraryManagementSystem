@@ -22,11 +22,12 @@ namespace LibraryManagementSystem.Models.Library
         void AddNewClient(Client client);
         void DeleteClient(int clientId);
         Client GetClientById(int clientId);
-        bool IsClientStudent(Client client);
-        bool IsClientTeacher(Client client);
         List<Client> ClientsList();
-        List<Student> GetAllStudents();
-        List<Teacher> GetAllTeachers();
+
+        // Client Categories
+        void AddNewClientCategory(ClientCategory clientCategory);
+        ClientCategory GetClientCategory(int categoryId);
+        void DeleteClientCategory(int clientCategoryId);
 
         // Loans
         void AddLoan(Client client, Book book, int duration);

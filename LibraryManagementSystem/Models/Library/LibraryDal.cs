@@ -18,6 +18,8 @@ namespace LibraryManagementSystem.Models.Library
             LibraryDb = new LibraryContext();
         }
 
+        #region Book
+
         /// <summary>
         /// Add a new book into the databse
         /// </summary>
@@ -93,6 +95,10 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Books.ToList();
         }
 
+        #endregion  Book
+
+        #region Client
+
         /// <summary>
         /// Add new client to the library
         /// </summary>
@@ -126,30 +132,6 @@ namespace LibraryManagementSystem.Models.Library
         }
 
         /// <summary>
-        /// check if the client is a Stutend
-        /// </summary>
-        /// <param name="client"></param>
-        /// <returns></returns>
-        public bool IsClientStudent(Client client)
-        {
-            if (client is Student)
-                return true;
-            return false;
-        }
-
-        /// <summary>
-        /// Check if the client is a teacher
-        /// </summary>
-        /// <param name="client"></param>
-        /// <returns></returns>
-        public bool IsClientTeacher(Client client)
-        {
-            if (client is Teacher)
-                return true;
-            return false;
-        }
-
-        /// <summary>
         /// return clients list
         /// </summary>
         /// <returns></returns>
@@ -158,23 +140,37 @@ namespace LibraryManagementSystem.Models.Library
             return LibraryDb.Clients.ToList();
         }
 
-        /// <summary>
-        /// return all students in the clients list
-        /// </summary>
-        /// <returns></returns>
-        public List<Student> GetAllStudents()
+        #endregion Client
+
+        #region ClientCategory
+
+        public void AddNewClientCategory(ClientCategory category)
         {
-            return LibraryDb.Clients.OfType<Student>().ToList<Student>();
+            LibraryDb.ClientCategories.Add(category);
+            LibraryDb.SaveChanges();
         }
 
-        /// <summary>
-        /// return all teacher in the clients list
-        /// </summary>
-        /// <returns></returns>
-        public List<Teacher> GetAllTeachers()
+        public ClientCategory GetClientCategory(int categoryId)
         {
-            return LibraryDb.Clients.OfType<Teacher>().ToList<Teacher>();
+            return LibraryDb.ClientCategories.First(c => c.ClientCategoryId == categoryId);
         }
+
+        public void DeleteClientCategory(int categoryId)
+        {
+            ClientCategory clientCategory = GetClientCategory(categoryId);
+            LibraryDb.ClientCategories.Remove(clientCategory);
+            LibraryDb.SaveChanges();
+        }
+
+        #endregion ClientCategory
+
+        #region ClientBook
+
+        public List<ClientBook> LoansList()
+        {
+            return LibraryDb.ClientBooks.ToList();
+        }
+
 
         public void AddLoan(Client client, Book book, int duration)
         {
@@ -186,17 +182,13 @@ namespace LibraryManagementSystem.Models.Library
                 //Client = client,
                 //Book = book,
             };
-            client.Loans.Add(loan);
-            book.Loans.Add(loan);
+            client.ClientBooks.Add(loan);
+            book.ClientBooks.Add(loan);
 
-            LibraryDb.Loans.Add(loan);
+            LibraryDb.ClientBooks.Add(loan);
             LibraryDb.SaveChanges();
         }
-
-        public List<ClientBook> LoansList()
-        {
-            return LibraryDb.Loans.ToList();
-        }
+        #endregion ClientBook
 
         #region IDisposable Support
         private bool disposedValue = false; // Pour détecter les appels redondants
