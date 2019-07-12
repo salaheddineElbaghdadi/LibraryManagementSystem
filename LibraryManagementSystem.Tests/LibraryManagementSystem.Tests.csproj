@@ -96,6 +96,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\LibraryDalTest.cs" />
+    <Compile Include="Models\Library\BookLibraryDalTest.cs" />
+    <Compile Include="Models\Library\ClientCategoryLibraryDalTest.cs" />
+    <Compile Include="Models\Library\ClientLibraryDalTest.cs" />
+    <Compile Include="Models\Library\LibraryTestConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

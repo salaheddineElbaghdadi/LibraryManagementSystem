@@ -11,8 +11,9 @@ namespace LibraryManagementSystem.Models.Library
         public int ClientCategoryId { get; set; }
         public string ClientCategoryName { get; set; }
         public int LoanDuration { get; set; }
+        public int MaxLoans { get; set; }
 
-        public virtual ICollection<Client> Clients { get; set; }
-        public virtual ICollection<PropertyBag> Properties { get; set; }
+        //public virtual ICollection<Client> Clients { get; set; }
+        //public virtual ICollection<PropertyBag> Properties { get; set; }
     }
 }

@@ -21,13 +21,18 @@ namespace LibraryManagementSystem.Models.Library
         // Clients
         void AddNewClient(Client client);
         void DeleteClient(int clientId);
+        void DeleteClient(Client client);
         Client GetClientById(int clientId);
         List<Client> ClientsList();
+        List<Client> GetClientsOfCategory(ClientCategory category);
 
         // Client Categories
         void AddNewClientCategory(ClientCategory clientCategory);
         ClientCategory GetClientCategory(int categoryId);
         void DeleteClientCategory(int clientCategoryId);
+        List<ClientCategory> GetClientCategories();
+
+        // Property Bags
 
         // Loans
         void AddLoan(Client client, Book book, int duration);

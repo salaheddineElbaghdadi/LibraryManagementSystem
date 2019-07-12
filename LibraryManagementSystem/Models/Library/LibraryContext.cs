@@ -35,6 +35,7 @@ namespace LibraryManagementSystem.Models.Library
                 .WithOptional()
                 .HasForeignKey(l => l.BookId);
 
+
             base.OnModelCreating(modelBuilder);
         }
     }

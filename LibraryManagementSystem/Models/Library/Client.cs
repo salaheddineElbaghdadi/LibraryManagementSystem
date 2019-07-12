@@ -22,7 +22,6 @@ namespace LibraryManagementSystem.Models.Library
         /// <summary>
         /// The Category of the client
         /// </summary>
-        public int ClientCategoryId { get; set; }
         public virtual ClientCategory Category { get; set; }
         /// <summary>
         /// Additional properties

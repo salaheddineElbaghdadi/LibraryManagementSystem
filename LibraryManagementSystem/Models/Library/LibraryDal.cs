@@ -122,6 +122,16 @@ namespace LibraryManagementSystem.Models.Library
         }
 
         /// <summary>
+        /// Remove client by reference
+        /// </summary>
+        /// <param name="client">client reference</param>
+        public void DeleteClient(Client client)
+        {
+            LibraryDb.Clients.Remove(client);
+            LibraryDb.SaveChanges();
+        }
+
+        /// <summary>
         /// Get client using id
         /// </summary>
         /// <param name="clientId">client id</param>
@@ -138,6 +148,17 @@ namespace LibraryManagementSystem.Models.Library
         public List<Client> ClientsList()
         {
             return LibraryDb.Clients.ToList();
+        }
+
+        public List<Client> GetClientsOfCategory(ClientCategory category)
+        {
+            List<Client> clients = new List<Client>();
+            foreach (Client client in LibraryDb.Clients.ToList())
+            {
+                if (client.Category == category)
+                    clients.Add(client);
+            }
+            return clients;
         }
 
         #endregion Client
@@ -160,6 +181,11 @@ namespace LibraryManagementSystem.Models.Library
             ClientCategory clientCategory = GetClientCategory(categoryId);
             LibraryDb.ClientCategories.Remove(clientCategory);
             LibraryDb.SaveChanges();
+        }
+
+        public List<ClientCategory> GetClientCategories()
+        {
+            return LibraryDb.ClientCategories.ToList();
         }
 
         #endregion ClientCategory
