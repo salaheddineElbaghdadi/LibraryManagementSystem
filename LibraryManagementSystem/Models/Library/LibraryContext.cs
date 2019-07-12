@@ -10,7 +10,7 @@ namespace LibraryManagementSystem.Models.Library
     {
         public LibraryContext() : base()
         {
-
+            Database.SetInitializer<LibraryContext>(new DropCreateDatabaseIfModelChanges<LibraryContext>());
         }
         
 
