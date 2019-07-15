@@ -27,6 +27,7 @@ namespace LibraryManagementSystem.Models.Library
         public void AddNewBook(Book book)
         {
             LibraryDb.Books.Add(book);
+            LibraryDb.SaveChanges();
         }
 
         /// <summary>

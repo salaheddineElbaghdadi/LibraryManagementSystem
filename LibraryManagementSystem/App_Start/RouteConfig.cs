@@ -18,6 +18,12 @@ namespace LibraryManagementSystem
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Tables",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Tables", action = "Books", id = UrlParameter.Optional }
+            );
         }
     }
 }
