@@ -32,8 +32,6 @@ namespace LibraryManagementSystem.Models.Library
         void DeleteClientCategory(int clientCategoryId);
         List<ClientCategory> GetClientCategories();
 
-        // Property Bags
-
         // Loans
         void AddLoan(Client client, Book book, int duration);
         List<ClientBook> LoansList();

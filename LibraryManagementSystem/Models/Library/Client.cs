@@ -23,10 +23,6 @@ namespace LibraryManagementSystem.Models.Library
         /// The Category of the client
         /// </summary>
         public virtual ClientCategory Category { get; set; }
-        /// <summary>
-        /// Additional properties
-        /// </summary>
-        public virtual PropertyBag Properties { get; set; }
 
         public Client()
         {

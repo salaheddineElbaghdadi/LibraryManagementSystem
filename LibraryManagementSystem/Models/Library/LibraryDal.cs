@@ -173,7 +173,7 @@ namespace LibraryManagementSystem.Models.Library
 
         public ClientCategory GetClientCategory(int categoryId)
         {
-            return LibraryDb.ClientCategories.First(c => c.ClientCategoryId == categoryId);
+            return LibraryDb.ClientCategories.First(c => c.Id == categoryId);
         }
 
         public void DeleteClientCategory(int categoryId)

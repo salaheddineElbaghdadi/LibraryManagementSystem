@@ -164,7 +164,6 @@
     <Compile Include="Models\Library\ILibraryDal.cs" />
     <Compile Include="Models\Library\LibraryContext.cs" />
     <Compile Include="Models\Library\LibraryDal.cs" />
-    <Compile Include="Models\Library\PropertyBag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

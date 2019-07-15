@@ -18,7 +18,6 @@ namespace LibraryManagementSystem.Models.Library
         public DbSet<Client> Clients { get; set; }
         public DbSet<ClientBook> ClientBooks { get; set; }
         public DbSet<ClientCategory> ClientCategories { get; set; }
-        public DbSet<PropertyBag> PropertyBags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
