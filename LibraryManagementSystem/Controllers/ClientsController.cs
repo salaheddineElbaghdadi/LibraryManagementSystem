@@ -24,7 +24,16 @@ namespace LibraryManagementSystem.Controllers
         {
             CreateNewClientViewModel model = new CreateNewClientViewModel();
             LibraryDal dal = new LibraryDal();
-            model.categories = dal.GetClientCategories();
+
+            List<ClientCategory> categories = dal.GetClientCategories();
+            List<SelectListItem> selections = new List<SelectListItem>();
+
+            foreach (ClientCategory category in categories)
+            {
+                selections.Add(new SelectListItem { Text = category.ClientCategoryName, Value = category.Id.ToString() });
+            }
+
+            model.CategorySelection = selections;
 
             return View(model);
         }
@@ -32,15 +41,17 @@ namespace LibraryManagementSystem.Controllers
         [HttpPost]
         public ActionResult CreateNewClient(CreateNewClientViewModel model)
         {
+            LibraryDal dal = new LibraryDal();
+
             Client client = new Client()
             {
                 FirstName = model.client.FirstName,
                 LastName = model.client.LastName,
                 CIN = model.client.CIN,
                 Email = model.client.Email,
+                Category = dal.GetClientCategory(model.SelectedCategoryId)
             };
 
-            LibraryDal dal = new LibraryDal();
             dal.AddNewClient(client);
 
             return View("index", new ClientsViewModel() { Clients = dal.ClientsList() });

@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             @Html.Label("Category")
-            @Html.DropDownListFor(model => model.client.Category, new SelectList(Model.categories, "ClientCategoryName"), new { @class = "form-control"})
+            @Html.DropDownListFor(model => model.SelectedCategoryId, Model.CategorySelection, new { @class = "form-control" })
         </div>
 
         <button type="submit" class="btn btn-success">Add</button>
