@@ -1,0 +1,36 @@
+﻿@model LibraryManagementSystem.ViewModels.Books.CreateNewViewModel
+
+@{
+    ViewBag.Title = "CreateNew";
+}
+
+<h2>CreateNew</h2>
+
+@using (Html.BeginForm("CreateNew", "Books", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal glyphicon-align-center">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("ISBN")
+            @Html.TextBoxFor(model => model.book.ISBN, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.Label("Title")
+            @Html.TextBoxFor(model => model.book.Title, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.Label("Totay Quantity")
+            @Html.TextBoxFor(model => model.book.TotalQuantity, new { @class = "form-control"})
+        </div>
+
+        <button type="submit" class="btn btn-success">Add</button>
+        <br/>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,35 @@
+﻿@model LibraryManagementSystem.ViewModels.Books.BooksViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateNew")
+</p>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var book in Model.BookList) {
+    <tr>
+        <td>@book.Id</td>
+        <td>@book.ISBN</td>
+        <td>@book.Title</td>
+        <td>@book.TotalQuantity</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

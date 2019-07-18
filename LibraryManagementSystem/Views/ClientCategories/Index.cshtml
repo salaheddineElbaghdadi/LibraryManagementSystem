@@ -1,0 +1,34 @@
+﻿@model LibraryManagementSystem.ViewModels.ClientCategories.ClientCategoriesViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateNewCategory")
+</p>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Category Name</th>
+        <th>Loan Duration</th>
+        <th>Maximum Loans</th>
+    </tr>
+
+@foreach (var category in Model.ClientCategoies) {
+    <tr>
+        <td>@category.Id</td>
+        <td>@category.ClientCategoryName</td>
+        <td>@category.LoanDuration</td>
+        <td>@category.MaxLoans</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model LibraryManagementSystem.ViewModels.ClientCategories.CreateNewCategoryViewModel
+
+@{
+    ViewBag.Title = "CreateNewCategory";
+}
+
+<h2>CreateNewCategory</h2>
+
+@using (Html.BeginForm("CreateNewCategory", "ClientCategories", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Category Name")
+            @Html.TextBoxFor(model => model.Category.ClientCategoryName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Loan Duration")
+            @Html.TextBoxFor(model => model.Category.LoanDuration, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Maximun Loans")
+            @Html.TextBoxFor(model => model.Category.MaxLoans, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Add</button>
+        <br />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

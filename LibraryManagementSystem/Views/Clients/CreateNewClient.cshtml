@@ -1,0 +1,45 @@
+﻿@model LibraryManagementSystem.ViewModels.Clients.CreateNewClientViewModel
+
+@{
+    ViewBag.Title = "CreateNewClient";
+    
+}
+
+<h2>CreateNewClient</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("First Name")
+            @Html.TextBoxFor(model => model.client.FirstName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Last Name")
+            @Html.TextBoxFor(model => model.client.LastName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("CIN")
+            @Html.TextBoxFor(model => model.client.CIN, new { @class = "form-control" })
+        </div>
+        <div class="form-gourp">
+            @Html.Label("Email")
+            @Html.TextBoxFor(model => model.client.Email, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Category")
+            @Html.DropDownListFor(model => model.client.Category, new SelectList(Model.categories, "ClientCategoryName"), new { @class = "form-control"})
+        </div>
+
+        <button type="submit" class="btn btn-success">Add</button>
+        <br />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
