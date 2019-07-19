@@ -42,5 +42,13 @@ namespace LibraryManagementSystem.Controllers
             return View("Index", new BooksViewModel { BookList = dal.BookList() });
         }
 
+        public ActionResult Delete(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            dal.DeleteBook(dal.GetBookById(id).Id);
+
+            return View("Index", new BooksViewModel { BookList = dal.BookList() });
+        }
+
     }
 }

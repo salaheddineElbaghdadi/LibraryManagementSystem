@@ -30,9 +30,9 @@
         <td>@client.Category.ClientCategoryName</td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { /*id = client.Id*/ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { id = client.Id }, new { onclick = "return confirm('Are you sure you want to delete?');"})
         </td>
     </tr>
 }

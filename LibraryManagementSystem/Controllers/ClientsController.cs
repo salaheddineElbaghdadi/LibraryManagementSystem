@@ -56,5 +56,13 @@ namespace LibraryManagementSystem.Controllers
 
             return View("index", new ClientsViewModel() { Clients = dal.ClientsList() });
         }
+
+        public ActionResult Delete(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            dal.DeleteClient(dal.GetClientById(id));
+
+            return View("Index", new ClientsViewModel() { Clients = dal.ClientsList() });
+        }
     }
 }

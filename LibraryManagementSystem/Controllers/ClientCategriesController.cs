@@ -40,5 +40,13 @@ namespace LibraryManagementSystem.Controllers
 
             return View("Index", new ClientCategoriesViewModel { ClientCategoies = dal.GetClientCategories() });
         }
+
+        public ActionResult Delete(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            dal.DeleteClientCategory(dal.GetClientCategory(id).Id);
+
+            return View("Index", new ClientCategoriesViewModel { ClientCategoies = dal.GetClientCategories() });
+        }
     }
 }

@@ -25,9 +25,9 @@
         <td>@book.Title</td>
         <td>@book.TotalQuantity</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { /*id = book.Id */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { id = book.Id }, new { onclick = "return confirm('Are you sure you want to delete?');" })
         </td>
     </tr>
 }
