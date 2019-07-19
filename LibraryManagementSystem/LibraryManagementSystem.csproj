@@ -157,6 +157,7 @@
     <Compile Include="Controllers\ClientCategriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,6 +175,7 @@
     <Compile Include="ViewModels\ClientCategories\CreateNewCategoryViewModel.cs" />
     <Compile Include="ViewModels\Clients\ClientsViewModel.cs" />
     <Compile Include="ViewModels\Clients\CreateNewClientViewModel.cs" />
+    <Compile Include="ViewModels\Loans\LoansViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -220,6 +222,7 @@
     <Content Include="Views\ClientCategories\CreateNewCategory.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\CreateNewClient.cshtml" />
+    <Content Include="Views\Loans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

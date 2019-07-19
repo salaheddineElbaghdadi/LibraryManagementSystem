@@ -1,0 +1,41 @@
+﻿@model LibraryManagementSystem.ViewModels.Loans.LoansViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Loans</h2>
+
+<p>
+    @Html.ActionLink("Add Loan", "AddLoan")
+</p>
+<table class="table">
+    <tr>
+        <th>Book ID</th>
+        <th>Client ID</th>
+        <th>Book Title</th>
+        <th>Client First Name</th>
+        <th>Client Last Name</th>
+        <td>Start Date</td>
+        <td>Actions</td>
+    </tr>
+
+    @foreach (var loan in Model.Loans)
+    {
+        <tr>
+            <td>@loan.BookId</td>
+            <td>@loan.ClientId</td>
+            <td>@Model.BookTitles[Model.Loans.IndexOf(loan)]</td>
+            <td>@Model.ClientFirstNames[Model.Loans.IndexOf(loan)]</td>
+            <td>@Model.ClientLastNames[Model.Loans.IndexOf(loan)]</td>
+            <td>@loan.StartDate</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /*id = book.Id */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new {/* id = book.Id*/ }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+
