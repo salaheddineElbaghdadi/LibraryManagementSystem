@@ -32,5 +32,10 @@ namespace LibraryManagementSystem.Controllers
 
             return View(model);
         }
+
+        public ActionResult AddLoan()
+        {
+            return View();
+        }
     }
 }
