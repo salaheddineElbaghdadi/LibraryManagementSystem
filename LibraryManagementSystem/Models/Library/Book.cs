@@ -25,6 +25,10 @@ namespace LibraryManagementSystem.Models.Library
         /// Total Quantity of the book
         /// </summary>
         public int TotalQuantity { get; set; }
+        /// <summary>
+        /// Is the book archived or not
+        /// </summary>
+        public bool Archived { get; set; }
 
         /// <summary>
         /// Clients borrowed the book
