@@ -13,6 +13,7 @@ namespace LibraryManagementSystem.Models.Library
         void AddNewBook(Book book);
         void AddNewBook(string isbn, string title, int quantity);
         void DeleteBook(int bookId);
+        void UpdateBook(Book book, Book newBook);
         Book GetBookById(int bookId);
         Book GetBookByISBN(string bookISBN);
         Book GetBookByTitle(string bookTitle);
@@ -22,18 +23,21 @@ namespace LibraryManagementSystem.Models.Library
         void AddNewClient(Client client);
         void DeleteClient(int clientId);
         void DeleteClient(Client client);
+        void UpdateClient(Client client, Client newClient);
         Client GetClientById(int clientId);
         List<Client> ClientsList();
         List<Client> GetClientsOfCategory(ClientCategory category);
 
         // Client Categories
         void AddNewClientCategory(ClientCategory clientCategory);
-        ClientCategory GetClientCategory(int categoryId);
         void DeleteClientCategory(int clientCategoryId);
+        void UpdateClientCategory(ClientCategory clientCategory, ClientCategory);
+        ClientCategory GetClientCategory(int categoryId);
         List<ClientCategory> GetClientCategories();
 
         // Loans
         void AddLoan(Client client, Book book, int duration);
+        void UpdateLoan(Client client, Book book, ClientBook newLoan);
         List<ClientBook> LoansList();
     }
 }

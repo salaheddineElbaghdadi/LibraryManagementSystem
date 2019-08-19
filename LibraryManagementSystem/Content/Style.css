@@ -14,8 +14,23 @@ html, body {
 }
 
 #sidebar {
-    background: #808080;
+    background: #f5f5f5;
     width: 15%;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#sidebar ul li:hover {
+    background: #dcdcdc;
 }
 
 #sidebar.collapsed {
