@@ -8,7 +8,7 @@ namespace LibraryManagementSystem.Models.Library
     public class LibraryDal : ILibraryDal
     {
         private LibraryContext LibraryDb;
-        
+
         /// <summary>
         /// Constructor
         /// Making a new instance of the LibraryContext class to access the library Database
@@ -53,7 +53,21 @@ namespace LibraryManagementSystem.Models.Library
             LibraryDb.Books.Remove(book);
             LibraryDb.SaveChanges();
         }
-        
+
+        /// <summary>
+        /// Update a book
+        /// </summary>
+        /// <param name="book"></param>
+        /// <param name="newBook"></param>
+        public void UpdateBook(Book book, Book newBook)
+        {
+            book.ISBN = newBook.ISBN;
+            book.Title = newBook.Title;
+            book.TotalQuantity = newBook.TotalQuantity;
+            book.Archived = newBook.Archived;
+            LibraryDb.SaveChanges();
+        }
+
         /// <summary>
         /// Returns book instance by id
         /// </summary>
@@ -133,6 +147,21 @@ namespace LibraryManagementSystem.Models.Library
         }
 
         /// <summary>
+        /// Update client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="newClient"></param>
+        public void UpdateClient(Client client, Client newClient)
+        {
+            client.FirstName = newClient.FirstName;
+            client.LastName = newClient.LastName;
+            client.CIN = newClient.CIN;
+            client.Email = newClient.Email;
+            client.Category = newClient.Category;
+            LibraryDb.SaveChanges();
+        }
+
+        /// <summary>
         /// Get client using id
         /// </summary>
         /// <param name="clientId">client id</param>
@@ -184,6 +213,19 @@ namespace LibraryManagementSystem.Models.Library
             LibraryDb.SaveChanges();
         }
 
+        /// <summary>
+        /// Update Client category
+        /// </summary>
+        /// <param name="clientCategory"></param>
+        /// <param name="clientCategory"></param>
+        public void UpdateClientCategory(ClientCategory clientCategory, ClientCategory newClientCategory)
+        {
+            clientCategory.ClientCategoryName = newClientCategory.ClientCategoryName;
+            clientCategory.LoanDuration = newClientCategory.LoanDuration;
+            clientCategory.MaxLoans = newClientCategory.MaxLoans;
+            LibraryDb.SaveChanges();
+        }
+
         public List<ClientCategory> GetClientCategories()
         {
             return LibraryDb.ClientCategories.ToList();
@@ -213,6 +255,31 @@ namespace LibraryManagementSystem.Models.Library
             book.ClientBooks.Add(loan);
 
             LibraryDb.ClientBooks.Add(loan);
+            LibraryDb.SaveChanges();
+        }
+
+        /// <summary>
+        /// Delete loan by id
+        /// </summary>
+        /// <param name="loanId"></param>
+        public void DeleteLoan(int bookId, int clientId)
+        {
+            ClientBook clientBook = LibraryDb.ClientBooks.FirstOrDefault(l => l.BookId == bookId && l.ClientId == clientId);
+            LibraryDb.ClientBooks.Remove(clientBook);
+            LibraryDb.SaveChanges();
+        }
+
+        /// <summary>
+        /// Update loan
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="book"></param>
+        /// <param name="clientBook"></param>
+        public void UpdateLoan(ClientBook loan, ClientBook newLoan)
+        {
+            loan.StartDate = newLoan.StartDate;
+            loan.LoanDuration = newLoan.LoanDuration;
+            loan.EndDate = newLoan.EndDate;
             LibraryDb.SaveChanges();
         }
         #endregion ClientBook

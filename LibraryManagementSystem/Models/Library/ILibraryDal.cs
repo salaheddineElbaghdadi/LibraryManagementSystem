@@ -31,13 +31,14 @@ namespace LibraryManagementSystem.Models.Library
         // Client Categories
         void AddNewClientCategory(ClientCategory clientCategory);
         void DeleteClientCategory(int clientCategoryId);
-        void UpdateClientCategory(ClientCategory clientCategory, ClientCategory);
+        void UpdateClientCategory(ClientCategory clientCategory, ClientCategory newClientCategory);
         ClientCategory GetClientCategory(int categoryId);
         List<ClientCategory> GetClientCategories();
 
         // Loans
         void AddLoan(Client client, Book book, int duration);
-        void UpdateLoan(Client client, Book book, ClientBook newLoan);
+        void DeleteLoan(int bookId, int clientId);
+        void UpdateLoan(ClientBook loan, ClientBook newLoan);
         List<ClientBook> LoansList();
     }
 }
