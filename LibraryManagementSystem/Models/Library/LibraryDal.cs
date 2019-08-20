@@ -36,9 +36,9 @@ namespace LibraryManagementSystem.Models.Library
         /// <param name="isbn">The ISBN of the book</param>
         /// <param name="title">The title of the book</param>
         /// <param name="quantity">The quantity of the book that will be availbale in the library</param>
-        public void AddNewBook(string isbn, string title, int quantity)
+        public void AddNewBook(string isbn, string title, int quantity, bool archived)
         {
-            Book newBook = new Book() { ISBN = isbn, Title = title, TotalQuantity = quantity };
+            Book newBook = new Book() { ISBN = isbn, Title = title, TotalQuantity = quantity, Archived = archived };
             LibraryDb.Books.Add(newBook);
             LibraryDb.SaveChanges();
         }

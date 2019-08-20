@@ -15,6 +15,7 @@
         <th>ISBN</th>
         <th>Title</th>
         <th>Quantity</th>
+        <th>Archived</th>
         <th>Actions</th>
     </tr>
 
@@ -24,6 +25,7 @@
         <td>@book.ISBN</td>
         <td>@book.Title</td>
         <td>@book.TotalQuantity</td>
+        <td>@book.Archived</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /*id = book.Id */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

@@ -72,7 +72,7 @@ namespace LibraryManagementSystem.Tests.Models.Library
         [TestMethod]
         public void AddNewBook_Test()
         {
-            dal.AddNewBook("1234567", "Book title", 20);
+            dal.AddNewBook("1234567", "Book title", 20, false);
             List<Book> books = dal.BookList();
 
             Assert.IsNotNull(books);
@@ -80,12 +80,13 @@ namespace LibraryManagementSystem.Tests.Models.Library
             Assert.AreEqual("1234567", books[0].ISBN);
             Assert.AreEqual("Book title", books[0].Title);
             Assert.AreEqual(20, books[0].TotalQuantity);
+            Assert.AreEqual(false, books[0].Archived);
         }
 
         [TestMethod]
         public void GetBookById_Test()
         {
-            dal.AddNewBook("1234567", "Book title", 20);
+            dal.AddNewBook("1234567", "Book title", 20, false);
             List<Book> books = dal.BookList();
             Book book = dal.GetBookById(books[0].Id);
 
@@ -96,7 +97,7 @@ namespace LibraryManagementSystem.Tests.Models.Library
         [TestMethod]
         public void GetBookByISBN_Test()
         {
-            dal.AddNewBook("1234567", "Book title", 20);
+            dal.AddNewBook("1234567", "Book title", 20, false);
             List<Book> books = dal.BookList();
             Book book = dal.GetBookByISBN(books[0].ISBN);
 
@@ -107,7 +108,7 @@ namespace LibraryManagementSystem.Tests.Models.Library
         [TestMethod]
         public void GetBookByTitle_Test()
         {
-            dal.AddNewBook("1234567", "Book title", 20);
+            dal.AddNewBook("1234567", "Book title", 20, false);
             List<Book> books = dal.BookList();
             Book book = dal.GetBookByTitle(books[0].Title);
 
@@ -118,7 +119,7 @@ namespace LibraryManagementSystem.Tests.Models.Library
         [TestMethod]
         public void DeleteBook_Test()
         {
-            dal.AddNewBook("1234567", "Book title", 20);
+            dal.AddNewBook("1234567", "Book title", 20, false);
             int id = dal.GetBookByTitle("Book title").Id;
             dal.DeleteBook(id);
             List<Book> books = dal.BookList();

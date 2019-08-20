@@ -33,7 +33,8 @@ namespace LibraryManagementSystem.Controllers
             {
                 Title = model.book.Title,
                 ISBN = model.book.ISBN,
-                TotalQuantity = model.book.TotalQuantity
+                TotalQuantity = model.book.TotalQuantity,
+                Archived = model.book.Archived
             };
 
             LibraryDal dal = new LibraryDal();

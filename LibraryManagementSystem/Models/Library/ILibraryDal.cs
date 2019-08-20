@@ -11,7 +11,7 @@ namespace LibraryManagementSystem.Models.Library
 
         // Books
         void AddNewBook(Book book);
-        void AddNewBook(string isbn, string title, int quantity);
+        void AddNewBook(string isbn, string title, int quantity, bool archived);
         void DeleteBook(int bookId);
         void UpdateBook(Book book, Book newBook);
         Book GetBookById(int bookId);
