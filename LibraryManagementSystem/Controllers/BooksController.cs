@@ -21,6 +21,13 @@ namespace LibraryManagementSystem.Controllers
             return View(model);
         }
 
+        public ActionResult Index(SearchBookViewModel model)
+        {
+            BooksViewModel newModel = new BooksViewModel();
+
+            return View(newModel);
+        }
+
         public ActionResult CreateNew()
         {
             return View();
@@ -41,6 +48,13 @@ namespace LibraryManagementSystem.Controllers
             dal.AddNewBook(book);
 
             return View("Index", new BooksViewModel { BookList = dal.BookList() });
+        }
+
+        [HttpPost]
+        public ActionResult SearchBook(SearchBookViewModel model)
+        {
+
+            return View("Index", "Books", model);
         }
 
         public ActionResult Delete(int id)

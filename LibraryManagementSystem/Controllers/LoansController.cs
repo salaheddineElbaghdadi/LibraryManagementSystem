@@ -37,5 +37,13 @@ namespace LibraryManagementSystem.Controllers
         {
             return View();
         }
+
+        public ActionResult AddLoan(AddLoanViewModel model)
+        {
+            LibraryDal dal = new LibraryDal();
+            dal.AddLoan(model.Loan);
+
+            return View("Index", new LoansViewModel { });
+        }
     }
 }

@@ -241,7 +241,7 @@ namespace LibraryManagementSystem.Models.Library
         }
 
 
-        public void AddLoan(Client client, Book book, int duration)
+        public void CreateLoan(Client client, Book book, int duration)
         {
             ClientBook loan = new ClientBook
             {
@@ -254,6 +254,12 @@ namespace LibraryManagementSystem.Models.Library
             client.ClientBooks.Add(loan);
             book.ClientBooks.Add(loan);
 
+            LibraryDb.ClientBooks.Add(loan);
+            LibraryDb.SaveChanges();
+        }
+
+        public void AddLoan(ClientBook loan)
+        {
             LibraryDb.ClientBooks.Add(loan);
             LibraryDb.SaveChanges();
         }

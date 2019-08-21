@@ -36,7 +36,8 @@ namespace LibraryManagementSystem.Models.Library
         List<ClientCategory> GetClientCategories();
 
         // Loans
-        void AddLoan(Client client, Book book, int duration);
+        void CreateLoan(Client client, Book book, int duration);
+        void AddLoan(ClientBook loan);
         void DeleteLoan(int bookId, int clientId);
         void UpdateLoan(ClientBook loan, ClientBook newLoan);
         List<ClientBook> LoansList();
