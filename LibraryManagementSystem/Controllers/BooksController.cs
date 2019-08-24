@@ -11,12 +11,18 @@ namespace LibraryManagementSystem.Controllers
     public class BooksController : Controller
     {
         // GET: Books
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             
             LibraryDal dal = new LibraryDal();
             BooksViewModel model = new BooksViewModel();
             model.BookList = dal.BookList();
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model.BookList = model.BookList.Where(b => b.Title.Contains(searchString)).ToList();
+            }
             
             return View(model);
         }
