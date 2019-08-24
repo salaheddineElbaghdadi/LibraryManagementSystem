@@ -11,11 +11,18 @@ namespace LibraryManagementSystem.Controllers
     public class ClientsController : Controller
     {
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             ClientsViewModel model = new ClientsViewModel();
             LibraryDal dal = new LibraryDal();
             model.Clients = dal.ClientsList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model.Clients = model.Clients.Where(c => c.FirstName.Contains(searchString) ||
+                                                         c.LastName.Contains(searchString) ||
+                                                         c.CIN.Contains(searchString)).ToList();
+            }
 
             return View(model);
         }
@@ -63,6 +70,11 @@ namespace LibraryManagementSystem.Controllers
             dal.DeleteClient(dal.GetClientById(id));
 
             return View("Index", new ClientsViewModel() { Clients = dal.ClientsList() });
+        }
+
+        public ActionResult AddLoan(int id)
+        {
+            return RedirectToAction("AddLoan", "Loans", new { clientId = id});
         }
     }
 }
