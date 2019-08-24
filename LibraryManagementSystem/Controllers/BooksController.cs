@@ -21,7 +21,7 @@ namespace LibraryManagementSystem.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model.BookList = model.BookList.Where(b => b.Title.Contains(searchString)).ToList();
+                model.BookList = model.BookList.Where(b => b.Title.Contains(searchString) || b.ISBN.Contains(searchString)).ToList();
             }
             
             return View(model);
@@ -46,7 +46,7 @@ namespace LibraryManagementSystem.Controllers
             LibraryDal dal = new LibraryDal();
             dal.AddNewBook(book);
 
-            return View("Index", new BooksViewModel { BookList = dal.BookList() });
+            return Redirect("Index");
         }
 
         public ActionResult Delete(int id)
