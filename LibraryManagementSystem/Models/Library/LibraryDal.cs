@@ -102,6 +102,45 @@ namespace LibraryManagementSystem.Models.Library
         }
 
         /// <summary>
+        /// Check if book exists in the database
+        /// </summary>
+        /// <param name="bookISBN"></param>
+        /// <returns></returns>
+        public bool BookExist(string bookISBN)
+        {
+            Book book = LibraryDb.Books.FirstOrDefault(b => b.ISBN == bookISBN);
+            if (book == null)
+                return false;
+            return true;
+        }
+
+        /// <summary>
+        /// Check if a book is available
+        /// </summary>
+        /// <param name="bookISBN"></param>
+        /// <returns></returns>
+        public bool BookAvailable(string bookISBN)
+        {
+            int i = 0;
+            List<ClientBook> loans = new List<ClientBook>();
+            loans = LibraryDb.ClientBooks.ToList();
+
+            foreach (ClientBook loan in loans)
+            {
+                Book book = GetBookById(loan.BookId);
+                if (book.ISBN == bookISBN)
+                {
+                    i++;
+                }
+            }
+
+            if (i >= GetBookByISBN(bookISBN).TotalQuantity)
+                return false;
+            return true;
+
+        }
+
+        /// <summary>
         /// Return List of all books in the database
         /// </summary>
         /// <returns></returns>

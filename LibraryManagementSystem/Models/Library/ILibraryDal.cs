@@ -17,6 +17,8 @@ namespace LibraryManagementSystem.Models.Library
         Book GetBookById(int bookId);
         Book GetBookByISBN(string bookISBN);
         Book GetBookByTitle(string bookTitle);
+        bool BookExist(string bookISBN);
+        bool BookAvailable(string bookISBN);
         List<Book> BookList();
 
         // Clients

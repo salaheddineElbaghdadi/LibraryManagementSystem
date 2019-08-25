@@ -126,5 +126,43 @@ namespace LibraryManagementSystem.Tests.Models.Library
 
             Assert.AreEqual(books.Count, 0);
         }
+
+        [TestMethod]
+        public void BookExist_Test()
+        {
+            dal.AddNewBook("1234567", "Book title", 20, false);
+
+            Assert.IsTrue(dal.BookExist("1234567"));
+            Assert.IsFalse(dal.BookExist("38291"));
+        }
+
+        [TestMethod]
+        public void BookAvailable_Test()
+        {
+            dal.AddNewBook("1234567", "Book title", 1, false);
+            Book book = dal.GetBookByISBN("1234567");
+
+            ClientCategory clientCategory = new ClientCategory()
+            {
+                ClientCategoryName = "cat",
+                MaxLoans = 1,
+                LoanDuration = 3
+            };
+
+            Client client = new Client()
+            {
+                FirstName = "fn",
+                LastName = "ln",
+                CIN = "cin1", 
+                Category = clientCategory,
+                Email = "email", 
+            };
+
+            dal.AddNewClient(client);
+
+            Assert.IsTrue(dal.BookAvailable("1234567"));
+            dal.CreateLoan(client, book, 2);
+            Assert.IsFalse(dal.BookAvailable("1234567"));
+        }
     }
 }
