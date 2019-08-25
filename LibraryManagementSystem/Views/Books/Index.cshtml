@@ -1,13 +1,20 @@
 ﻿@model LibraryManagementSystem.ViewModels.Books.BooksViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Books";
 }
 
-<h2>Index</h2>
+<h2>Books</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateNew")
+    @using (Html.BeginForm("Index", "Books", FormMethod.Get))
+    {
+    <p>
+        @Html.TextBox("searchString", "Name/CIN")
+        <input type="submit" value="search"/>
+    </p>
+    }
 </p>
 
 @using (Html.BeginForm())

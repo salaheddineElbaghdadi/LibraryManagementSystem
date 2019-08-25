@@ -33,9 +33,14 @@ namespace LibraryManagementSystem.Controllers
             return View(model);
         }
 
-        public ActionResult AddLoan()
+        public ActionResult AddLoan(int clientId)
         {
-            return View();
+            AddLoanViewModel model = new AddLoanViewModel();
+            model.loan = new ClientBook();
+            model.clientId = clientId;
+            model.loan.ClientId = clientId;
+
+            return View(model);
         }
 
         public ActionResult AddLoan(AddLoanViewModel model)

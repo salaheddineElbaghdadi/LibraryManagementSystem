@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using Npgsql;
 
 namespace LibraryManagementSystem.Models.Library
 {
+    class NpgSqlConfiguration : DbConfiguration
+    {
+        public NpgSqlConfiguration()
+        {
+            var name = "Npgsql";
+
+            SetProviderFactory(providerInvariantName: name,
+            providerFactory: NpgsqlFactory.Instance);
+
+            SetProviderServices(providerInvariantName: name,
+            provider: NpgsqlServices.Instance);
+
+            SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
+        }
+    }
+
     public class LibraryContext : DbContext
     {
-        public LibraryContext() : base()
+        public LibraryContext() : base("LibraryContext")
         {
             Database.SetInitializer<LibraryContext>(new DropCreateDatabaseAlways<LibraryContext>());
         }
@@ -18,6 +35,7 @@ namespace LibraryManagementSystem.Models.Library
         public DbSet<Client> Clients { get; set; }
         public DbSet<ClientBook> ClientBooks { get; set; }
         public DbSet<ClientCategory> ClientCategories { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
