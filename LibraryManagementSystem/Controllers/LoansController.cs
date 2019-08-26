@@ -33,20 +33,21 @@ namespace LibraryManagementSystem.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult AddLoan(int clientId)
         {
             AddLoanViewModel model = new AddLoanViewModel();
             model.loan = new ClientBook();
-            model.clientId = clientId;
             model.loan.ClientId = clientId;
 
             return View(model);
         }
 
+        [HttpPost]
         public ActionResult AddLoan(AddLoanViewModel model)
         {
             LibraryDal dal = new LibraryDal();
-            dal.AddLoan(model.Loan);
+            dal.AddLoan(model.loan);
 
             return View("Index", new LoansViewModel { });
         }

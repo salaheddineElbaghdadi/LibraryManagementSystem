@@ -27,13 +27,6 @@ namespace LibraryManagementSystem.Controllers
             return View(model);
         }
 
-        public ActionResult Index(SearchBookViewModel model)
-        {
-            BooksViewModel newModel = new BooksViewModel();
-
-            return View(newModel);
-        }
-
         public ActionResult CreateNew()
         {
             return View();
@@ -56,12 +49,6 @@ namespace LibraryManagementSystem.Controllers
             return Redirect("Index");
         }
 
-        [HttpPost]
-        public ActionResult SearchBook(SearchBookViewModel model)
-        {
-
-            return View("Index", "Books", model);
-        }
 
         public ActionResult Delete(int id)
         {

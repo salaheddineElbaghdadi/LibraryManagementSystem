@@ -17,8 +17,6 @@
     }
 </p>
 
-@using (Html.BeginForm())
-
 <table class="table">
     <tr>
         <th>ID</th>
@@ -29,7 +27,8 @@
         <th>Actions</th>
     </tr>
 
-@foreach (var book in Model.BookList) {
+@foreach (var book in Model.BookList)
+{
     <tr>
         <td>@book.Id</td>
         <td>@book.ISBN</td>

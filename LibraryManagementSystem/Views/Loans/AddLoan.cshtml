@@ -10,19 +10,13 @@
 {
     @Html.AntiForgeryToken()
 
-<<<<<<< HEAD
-    <div class="form-horizontal glyphicon-align-center">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.Label("Client Id")
-            @Html.TextBoxFor(model => model.Loan.ClientId, new { @class = "form-control" })
-=======
     <div class="form-horizontal">
         <div class="form-group">
             @Html.Label("Client Id")
             @Html.TextBoxFor(model => model.loan.ClientId, new {@readonly = true})
->>>>>>> e91890eabb9cc47925403d07673b12943a79541e
+        </div>
+        <div class="form-group">
+            @Html.Label("Book ISBN")
         </div>
 
         <button type="submit" class="btn btn-success">Add</button>
