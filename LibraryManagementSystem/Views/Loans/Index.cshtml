@@ -6,9 +6,7 @@
 
 <h2>Loans</h2>
 
-<p>
-    @Html.ActionLink("Add Loan", "AddLoan")
-</p>
+
 <table class="table">
     <tr>
         <th>Book ID</th>
@@ -26,8 +24,8 @@
             <td>@loan.BookId</td>
             <td>@loan.ClientId</td>
             <td>@Model.BookTitles[Model.Loans.IndexOf(loan)]</td>
-            <td>@Model.ClientFirstNames[Model.Loans.IndexOf(loan)]</td>
-            <td>@Model.ClientLastNames[Model.Loans.IndexOf(loan)]</td>
+            <td>@Model.ClientsFirstNames[Model.Loans.IndexOf(loan)]</td>
+            <td>@Model.ClientsLastNames[Model.Loans.IndexOf(loan)]</td>
             <td>@loan.StartDate</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /*id = book.Id */ }) |

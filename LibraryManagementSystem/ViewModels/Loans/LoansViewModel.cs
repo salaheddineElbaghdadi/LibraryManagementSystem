@@ -10,7 +10,7 @@ namespace LibraryManagementSystem.ViewModels.Loans
     {
         public List<ClientBook> Loans { get; set; }
         public List<string> BookTitles { get; set; }
-        public List<string> ClientFirstNames { get; set; }
-        public List<string> ClientLastNames { get; set; }
+        public List<string> ClientsFirstNames { get; set; }
+        public List<string> ClientsLastNames { get; set; }
     }
 }

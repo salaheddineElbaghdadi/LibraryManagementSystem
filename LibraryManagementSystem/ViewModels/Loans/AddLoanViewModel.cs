@@ -9,5 +9,6 @@ namespace LibraryManagementSystem.ViewModels.Loans
     public class AddLoanViewModel
     {
         public ClientBook loan { get; set; }
+        public string ISBN { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Npgsql;
 
 namespace LibraryManagementSystem.Models.Library
 {
+    /*
     class NpgSqlConfiguration : DbConfiguration
     {
         public NpgSqlConfiguration()
@@ -21,13 +22,14 @@ namespace LibraryManagementSystem.Models.Library
 
             SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
         }
-    }
+    }*/
 
     public class LibraryContext : DbContext
     {
         public LibraryContext() : base("LibraryContext")
         {
             Database.SetInitializer<LibraryContext>(new DropCreateDatabaseAlways<LibraryContext>());
+            //Database.SetInitializer<LibraryContext>(new DropCreateDatabaseIfModelChanges<LibraryContext>());
         }
         
 
