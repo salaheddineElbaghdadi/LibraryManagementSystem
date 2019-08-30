@@ -72,6 +72,17 @@ namespace LibraryManagementSystem.Controllers
         public ActionResult Delete(int id)
         {
             LibraryDal dal = new LibraryDal();
+            
+            foreach (ClientBook loan in dal.LoansList())
+            {
+                if (loan.BookId == id)
+                {
+                    ViewBag.ErrorScript = @"<script>alert('This book is used in an active loan')</script>";
+                    return View("Index", new BooksViewModel { BookList = dal.BookList() });
+                }
+            }
+
+            ViewBag.ErroScript = String.Empty;
             dal.DeleteBook(dal.GetBookById(id).Id);
 
             return View("Index", new BooksViewModel { BookList = dal.BookList() });

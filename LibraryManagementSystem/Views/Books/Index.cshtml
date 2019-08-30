@@ -6,6 +6,8 @@
 
 <h2>Books</h2>
 
+@Html.Raw(ViewBag.ErrorScript)
+
 <p>
     @Html.ActionLink("Create New", "CreateNew")
     @using (Html.BeginForm("Index", "Books", FormMethod.Get))
