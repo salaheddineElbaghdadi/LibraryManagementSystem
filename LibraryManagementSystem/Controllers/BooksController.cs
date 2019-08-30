@@ -27,9 +27,11 @@ namespace LibraryManagementSystem.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult CreateNew()
         {
-            return View();
+            CreateNewViewModel model = new CreateNewViewModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -44,9 +46,26 @@ namespace LibraryManagementSystem.Controllers
             };
 
             LibraryDal dal = new LibraryDal();
-            dal.AddNewBook(book);
 
-            return Redirect("Index");
+            if (ModelState.IsValid)
+            {
+
+                if (dal.GetBookByISBN(book.ISBN) != null)
+                {
+                    model.alreadyExists = true;
+                    return View(model);
+                }
+                
+                dal.AddNewBook(book);
+                return Redirect("Index");
+            }
+
+            if (dal.GetBookByISBN(book.ISBN) != null)
+                model.alreadyExists = true;
+            else
+                model.alreadyExists = false;
+
+            return View(model);
         }
 
 

@@ -16,14 +16,17 @@ namespace LibraryManagementSystem.Models.Library
         /// ISBN : International Standard Book Number
         /// </summary>
         [Required]
+        [StringLength(maximumLength: 13, MinimumLength = 10)]
         public string ISBN { get; set; }
         /// <summary>
         /// Title of the book
         /// </summary>
+        [Required]
         public string Title { get; set; }
         /// <summary>
         /// Total Quantity of the book
         /// </summary>
+        [Required]
         public int TotalQuantity { get; set; }
         /// <summary>
         /// Is the book archived or not

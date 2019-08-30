@@ -28,8 +28,8 @@ namespace LibraryManagementSystem.Models.Library
     {
         public LibraryContext() : base("LibraryContext")
         {
-            Database.SetInitializer<LibraryContext>(new DropCreateDatabaseAlways<LibraryContext>());
-            //Database.SetInitializer<LibraryContext>(new DropCreateDatabaseIfModelChanges<LibraryContext>());
+            //Database.SetInitializer<LibraryContext>(new DropCreateDatabaseAlways<LibraryContext>());
+            Database.SetInitializer<LibraryContext>(new DropCreateDatabaseIfModelChanges<LibraryContext>());
         }
         
 
