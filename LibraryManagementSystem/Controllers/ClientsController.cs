@@ -59,9 +59,15 @@ namespace LibraryManagementSystem.Controllers
                 Category = dal.GetClientCategory(model.SelectedCategoryId)
             };
 
-            dal.AddNewClient(client);
+            if (ModelState.IsValid)
+            {
 
-            return View("index", new ClientsViewModel() { Clients = dal.ClientsList() });
+                dal.AddNewClient(client);
+                return View("index", new ClientsViewModel() { Clients = dal.ClientsList() });
+            }
+
+            return View(model);
+
         }
 
         public ActionResult Delete(int id)
