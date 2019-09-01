@@ -207,7 +207,12 @@ namespace LibraryManagementSystem.Models.Library
         /// <returns></returns>
         public Client GetClientById(int clientId)
         {
-            return LibraryDb.Clients.First(c => c.Id == clientId);
+            return LibraryDb.Clients.FirstOrDefault(c => c.Id == clientId);
+        }
+
+        public Client GetClientByCIN(string clientCIN)
+        {
+            return LibraryDb.Clients.FirstOrDefault(c => c.CIN == clientCIN);
         }
 
         /// <summary>
@@ -242,7 +247,7 @@ namespace LibraryManagementSystem.Models.Library
 
         public ClientCategory GetClientCategory(int categoryId)
         {
-            return LibraryDb.ClientCategories.First(c => c.Id == categoryId);
+            return LibraryDb.ClientCategories.FirstOrDefault(c => c.Id == categoryId);
         }
 
         public void DeleteClientCategory(int categoryId)

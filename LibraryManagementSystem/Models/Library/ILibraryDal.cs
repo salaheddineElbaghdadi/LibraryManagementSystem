@@ -27,6 +27,7 @@ namespace LibraryManagementSystem.Models.Library
         void DeleteClient(Client client);
         void UpdateClient(Client client, Client newClient);
         Client GetClientById(int clientId);
+        Client GetClientByCIN(string clientCIN);
         List<Client> ClientsList();
         List<Client> GetClientsOfCategory(ClientCategory category);
 

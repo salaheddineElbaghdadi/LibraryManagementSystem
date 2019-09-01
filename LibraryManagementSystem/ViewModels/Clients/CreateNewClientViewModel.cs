@@ -11,6 +11,12 @@ namespace LibraryManagementSystem.ViewModels.Clients
     {
         public Client client { get; set; }
         public List<SelectListItem> CategorySelection { get; set; }
-        public int SelectedCategoryId { get; set; }
+        public string SelectedCategoryId { get; set; }
+        public bool validCIN { get; set; }
+
+        public CreateNewClientViewModel()
+        {
+            validCIN = true;
+        }
     }
 }

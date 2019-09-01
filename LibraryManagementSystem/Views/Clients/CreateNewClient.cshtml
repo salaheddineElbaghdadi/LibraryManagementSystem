@@ -28,14 +28,24 @@
             @Html.Label("CIN")
             @Html.TextBoxFor(model => model.client.CIN, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.client.CIN, String.Empty, new { @class = "invalid-message"})
+            @if (!Model.validCIN)
+            {
+                <text>
+                   @Html.ValidationMessage("CIN", "CIN already used", new { @class = "invalid-message"}) 
+                </text>
+            }
         </div>
         <div class="form-gourp">
             @Html.Label("Email")
             @Html.TextBoxFor(model => model.client.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.client.Email, String.Empty, new { @class = "invalid-message"})
         </div>
         <div class="form-group">
             @Html.Label("Category")
             @Html.DropDownListFor(model => model.SelectedCategoryId, Model.CategorySelection, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SelectedCategoryId, String.Empty, new { @class = "invalid-message"})
+        </div>
+        <div>
             @Html.ValidationMessageFor(model => model.client.Category, String.Empty, new { @class = "invalid-message"})
         </div>
 

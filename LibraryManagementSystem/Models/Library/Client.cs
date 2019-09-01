@@ -16,7 +16,6 @@ namespace LibraryManagementSystem.Models.Library
         public string LastName { get; set; }
         [Required]
         public string CIN { get; set; }
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")]
         public string Email { get; set; }
 
         /// <summary>

@@ -50,22 +50,51 @@ namespace LibraryManagementSystem.Controllers
         {
             LibraryDal dal = new LibraryDal();
 
+            List<ClientCategory> categories = dal.GetClientCategories();
+            List<SelectListItem> selections = new List<SelectListItem>();
+
+            foreach (ClientCategory category in categories)
+            {
+                selections.Add(new SelectListItem { Text = category.ClientCategoryName, Value = category.Id.ToString() });
+            }
+
+            model.CategorySelection = selections;
+
+            int id;
+            Int32.TryParse(model.SelectedCategoryId, out id);
+            model.client.Category = dal.GetClientCategory(id);
+
+            if (model.client.Category != null)
+            {
+                ModelState.Remove("client.Category");
+            }
+
             Client client = new Client()
             {
                 FirstName = model.client.FirstName,
                 LastName = model.client.LastName,
                 CIN = model.client.CIN,
                 Email = model.client.Email,
-                Category = dal.GetClientCategory(model.SelectedCategoryId)
+                Category = model.client.Category
             };
 
             if (ModelState.IsValid)
             {
-
+                if (dal.GetClientByCIN(client.CIN) != null)
+                {
+                    model.validCIN = false;
+                    return View(model);
+                }
                 dal.AddNewClient(client);
                 return View("index", new ClientsViewModel() { Clients = dal.ClientsList() });
             }
 
+            if (dal.GetClientByCIN(client.CIN) != null)
+                model.validCIN = false;
+            else
+                model.validCIN = true;
+
+            //model.client = client;
             return View(model);
 
         }
