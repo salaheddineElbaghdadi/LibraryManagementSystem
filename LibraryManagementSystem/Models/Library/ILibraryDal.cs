@@ -43,6 +43,7 @@ namespace LibraryManagementSystem.Models.Library
         void AddLoan(ClientBook loan);
         void DeleteLoan(int bookId, int clientId);
         void UpdateLoan(ClientBook loan, ClientBook newLoan);
+        ClientBook GetLoan(int clientId, int bookId);
         List<ClientBook> LoansList();
     }
 }

@@ -15,6 +15,7 @@
         <th>Client First Name</th>
         <th>Client Last Name</th>
         <td>Start Date</td>
+        <td>Give back Date</td>
         <td>Actions</td>
     </tr>
 
@@ -27,8 +28,9 @@
             <td>@Model.ClientsFirstNames[Model.Loans.IndexOf(loan)]</td>
             <td>@Model.ClientsLastNames[Model.Loans.IndexOf(loan)]</td>
             <td>@loan.StartDate</td>
+            <td>@loan.EndDate</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /*id = book.Id */ }) |
+                @Html.ActionLink("Edit", "EditLoan", new { clientId = loan.ClientId, bookId = loan.BookId}) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new {/* id = book.Id*/ }, new { onclick = "return confirm('Are you sure you want to delete?');" })
             </td>

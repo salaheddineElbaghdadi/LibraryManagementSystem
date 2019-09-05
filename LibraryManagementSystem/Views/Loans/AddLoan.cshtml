@@ -18,6 +18,12 @@
         <div class="form-group">
             @Html.Label("Book ISBN")
             @Html.TextBoxFor(model => model.ISBN)
+            @if (!Model.bookFound)
+            {
+                <text>
+                    @Html.ValidationMessage("Book ISBN", "Book not found", new { @class = "invalid-message" })
+                </text>
+            }
         </div>
         <div class="form-group">
             @Html.Label("Start Date")

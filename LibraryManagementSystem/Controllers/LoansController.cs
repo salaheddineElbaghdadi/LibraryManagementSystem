@@ -53,13 +53,47 @@ namespace LibraryManagementSystem.Controllers
         {
             LibraryDal dal = new LibraryDal();
             Book book = dal.GetBookByISBN(model.ISBN);
-            model.loan.BookId = book.Id;
 
-            dal.AddLoan(model.loan);
+            if (book != null)
+            {
+                model.bookFound = true;
+                model.loan.BookId = book.Id;
+                dal.AddLoan(model.loan);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                model.bookFound = false;
+            }
 
+            return View(model);
+        }
 
-            //return View("Index");
-            return RedirectToAction("Index");
+        public ActionResult EditLoan(int clientId, int bookId)
+        {
+            LibraryDal dal = new LibraryDal();
+            EditLoanViewModel model = new EditLoanViewModel();
+
+            model.clientId = clientId;
+            model.bookId = bookId;
+            model.loan = dal.GetLoan(clientId, bookId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditLoan(EditLoanViewModel model)
+        {
+            LibraryDal dal = new LibraryDal();
+            ClientBook oldLoan = dal.GetLoan(model.clientId, model.bookId);
+
+            if (ModelState.IsValid && oldLoan != null)
+            {
+                dal.UpdateLoan(oldLoan, model.loan);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
     }
 }

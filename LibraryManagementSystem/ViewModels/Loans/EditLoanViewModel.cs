@@ -6,15 +6,10 @@ using LibraryManagementSystem.Models.Library;
 
 namespace LibraryManagementSystem.ViewModels.Loans
 {
-    public class AddLoanViewModel
+    public class EditLoanViewModel
     {
+        public int clientId { get; set; }
+        public int bookId { get; set; }
         public ClientBook loan { get; set; }
-        public string ISBN { get; set; }
-        public bool bookFound { get; set; }
-
-        public AddLoanViewModel()
-        {
-            bookFound = true;
-        }
     }
 }

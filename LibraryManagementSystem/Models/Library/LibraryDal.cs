@@ -332,6 +332,17 @@ namespace LibraryManagementSystem.Models.Library
             loan.EndDate = newLoan.EndDate;
             LibraryDb.SaveChanges();
         }
+
+        /// <summary>
+        /// Get loan by clientId and bookId
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
+        public ClientBook GetLoan(int clientId, int bookId)
+        {
+            return LibraryDb.ClientBooks.FirstOrDefault(l => l.ClientId == clientId && l.BookId == bookId);
+        }
         #endregion ClientBook
 
         #region IDisposable Support
