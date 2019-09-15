@@ -17,27 +17,48 @@
             $(function () {
                 $(".datepicker").datepicker();
             });
-            );
+                );
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+          });
     </script>
 </head>
 <body>
+    <!--
+    <div id="sidebar">
+        <ul>
+            <li>Html.ActionLink("Dashboard", "")</li>
+            <li>Html.ActionLink("Statistics", "")</li>
+            <hr/>
+            <li>Html.ActionLink("Books", "Index", "Books")</li>
+            <li>Html.ActionLink("Clients", "Index", "Clients")</li>
+            <li>Html.ActionLink("Loans", "Index", "Loans")</li>
+            <hr/>
+            <li>Html.ActionLink("Settings", "")</li>
+        </ul>
+    </div>
+    -->
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Start Bootstrap </div>
+            <div class="list-group list-group-flush">
+                <a href="@Url.Action("", "")" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="@Url.Action("", "")" class="list-group-item list-group-item-action bg-light">Statistics</a>
+                <a href="@Url.Action("Index", "Books")" class="list-group-item list-group-item-action bg-light">Books</a>
+                <a href="@Url.Action("Index", "Clients")" class="list-group-item list-group-item-action bg-light">Clients</a>
+                <a href="@Url.Action("Index", "Loans")" class="list-group-item list-group-item-action bg-light">Loans</a>
+                <a href="@Url.Action("", "")" class="list-group-item list-group-item-action bg-light">Settings</a>
+            </div>
+        </div>
+    </div>
 
-        <div id="sidebar">
-            <ul>
-                <li>@Html.ActionLink("Dashboard", "")</li>
-                <li>@Html.ActionLink("Statistics", "")</li>
-                <hr/>
-                <li>@Html.ActionLink("Books", "Index", "Books")</li>
-                <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
-                <li>@Html.ActionLink("Loans", "Index", "Loans")</li>
-                <hr/>
-                <li>@Html.ActionLink("Settings", "")</li>
-            </ul>
-        </div>
-        <div id="content" class="body-content">
-            @RenderBody()
-        </div>
-   
+    <div id="content" class="body-content">
+        @RenderBody()
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

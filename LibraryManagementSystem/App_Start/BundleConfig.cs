@@ -26,7 +26,8 @@ namespace LibraryManagementSystem
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/Style.css",
-                      "~/Content/Validation.css"));
+                      "~/Content/Validation.css",
+                      "~/Content/simple-sidebar.css"));
         }
     }
 }
