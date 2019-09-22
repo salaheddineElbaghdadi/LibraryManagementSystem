@@ -88,5 +88,53 @@ namespace LibraryManagementSystem.Controllers
             return View("Index", new BooksViewModel { BookList = dal.BookList() });
         }
 
+        [HttpGet]
+        public ActionResult EditBook(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            EditBookViewModel model = new EditBookViewModel();
+            model.bookId = id;
+            model.book = dal.GetBookById(id);
+            model.oldISBN = model.book.ISBN;
+
+            if (model.book == null)
+                return RedirectToAction("Index");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditBook(EditBookViewModel model)
+        {
+
+            LibraryDal dal = new LibraryDal();
+            Book newBook = new Book()
+            {
+                ISBN = model.book.ISBN,
+                Title = model.book.Title,
+                TotalQuantity = model.book.TotalQuantity,
+                Archived = model.book.Archived
+            };
+
+            if (ModelState.IsValid)
+            {
+                if (model.oldISBN != newBook.ISBN)
+                {
+                    Book newIsbnBook = dal.GetBookByISBN(newBook.ISBN);
+                    if (newIsbnBook != null)
+                    {
+                        model.alreadyExists = true;
+                        return View(model);
+                    }
+                    dal.UpdateBook(dal.GetBookById(model.bookId), newBook);
+                    return RedirectToAction("Index");
+                }
+
+                dal.UpdateBook(dal.GetBookById(model.bookId), newBook);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
     }
 }

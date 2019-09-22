@@ -1,0 +1,58 @@
+﻿@model LibraryManagementSystem.ViewModels.Books.EditBookViewModel
+
+@{
+    ViewBag.Title = "EditBook";
+}
+
+<h2>EditBook</h2>
+
+@using (Html.BeginForm("EditBook", "Books", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>EditBookViewModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.Label("ISBN")
+        @Html.TextBoxFor(model => model.book.ISBN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.book.ISBN, String.Empty, new { @class = "invalid-message" })
+        @if (Model.alreadyExists)
+        {
+            <text>
+                @Html.ValidationMessage("ISBN", "ISBN already used", new { @class = "invalid-message" })
+            </text>
+        }
+    </div>
+    <div class="form-group">
+        @Html.Label("Title")
+        @Html.TextBoxFor(model => model.book.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.book.Title, String.Empty, new { @class = "invalid-message" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Totay Quantity")
+        @Html.TextBoxFor(model => model.book.TotalQuantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.book.TotalQuantity, String.Empty, new { @class = "invalid-message" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Archived")
+        @Html.CheckBoxFor(model => model.book.Archived, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(model => model.bookId)
+    @Html.HiddenFor(model => model.oldISBN)
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
