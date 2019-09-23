@@ -1,4 +1,5 @@
 ﻿@model LibraryManagementSystem.ViewModels.Loans.LoansViewModel
+@using System;
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +22,17 @@
 
     @foreach (var loan in Model.Loans)
     {
-        <tr>
+        if (loan.EndDate != null)
+        {
+            @:<tr class="table-success">
+        }
+        else if (loan.StartDate.AddDays((double)loan.LoanDuration) < DateTime.Now){
+            @:<tr class="table-danger">
+        }
+        else
+        {
+            @:<tr>
+        }
             <td>@loan.BookId</td>
             <td>@loan.ClientId</td>
             <td>@Model.BookTitles[Model.Loans.IndexOf(loan)]</td>
@@ -34,7 +45,7 @@
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new {/* id = book.Id*/ }, new { onclick = "return confirm('Are you sure you want to delete?');" })
             </td>
-        </tr>
+        @:</tr>
     }
 
 </table>
