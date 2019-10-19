@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Client Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateNewCategory")
@@ -15,6 +15,7 @@
         <th>Category Name</th>
         <th>Loan Duration</th>
         <th>Maximum Loans</th>
+        <th>Actions</th>
     </tr>
 
 @foreach (var category in Model.ClientCategoies) {

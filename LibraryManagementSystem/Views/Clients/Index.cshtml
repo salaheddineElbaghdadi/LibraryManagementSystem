@@ -4,14 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Clients</h2>
 
 <p>
     @Html.ActionLink("CreateNewClient", "CreateNewClient")
     @using (Html.BeginForm("Index", "Clients", FormMethod.Get))
     {
      <p>
-         @Html.TextBox("searchString", "Title/ISBN")
+         @Html.TextBox("searchString", "Name/CIN")
          <input type="submit" value="search"/>
      </p>
     }

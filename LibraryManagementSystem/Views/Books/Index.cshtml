@@ -13,7 +13,7 @@
     @using (Html.BeginForm("Index", "Books", FormMethod.Get))
     {
     <p>
-        @Html.TextBox("searchString", "Name/CIN")
+        @Html.TextBox("searchString", "Title/ISBN")
         <input type="submit" value="search"/>
     </p>
     }
