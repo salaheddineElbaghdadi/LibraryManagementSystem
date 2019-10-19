@@ -111,5 +111,84 @@ namespace LibraryManagementSystem.Controllers
         {
             return RedirectToAction("AddLoan", "Loans", new { clientId = id});
         }
+
+        [HttpGet]
+        public ActionResult EditClient(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            EditClientViewModel model = new EditClientViewModel();
+            model.clientId = id;
+            model.client = dal.GetClientById(id);
+            model.oldCIN = model.client.CIN;
+
+            List<ClientCategory> categories = dal.GetClientCategories();
+            List<SelectListItem> selections = new List<SelectListItem>();
+
+            foreach (ClientCategory category in categories)
+            {
+                selections.Add(new SelectListItem { Text = category.ClientCategoryName, Value = category.Id.ToString() });
+            }
+
+            model.CategorySelection = selections;
+
+            if (model.client == null)
+                return RedirectToAction("Index");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditClient(EditClientViewModel model)
+        {
+            LibraryDal dal = new LibraryDal();
+           
+            List<ClientCategory> categories = dal.GetClientCategories();
+            List<SelectListItem> selections = new List<SelectListItem>();
+
+            foreach (ClientCategory category in categories)
+            {
+                selections.Add(new SelectListItem { Text = category.ClientCategoryName, Value = category.Id.ToString() });
+            }
+
+            model.CategorySelection = selections;
+
+            int id;
+            Int32.TryParse(model.SelectedCategoryId, out id);
+            model.client.Category = dal.GetClientCategory(id);
+
+            if (model.client.Category != null)
+            {
+                ModelState.Remove("client.Category");
+            }
+
+            Client newClient = new Client
+            {
+                CIN = model.client.CIN,
+                FirstName = model.client.FirstName,
+                LastName = model.client.LastName,
+                Email = model.client.Email,
+                Category = model.client.Category
+            };
+
+
+            if (ModelState.IsValid)
+            {
+                if (model.oldCIN != newClient.CIN)
+                {
+                    Client newCINClient = dal.GetClientByCIN(newClient.CIN);
+                    if (newCINClient != null)
+                    {
+                        model.alreadyExists = true;
+                        return View(model);
+                    }
+                    dal.UpdateClient(dal.GetClientById(model.clientId), newClient);
+                    return RedirectToAction("Index");
+                }
+
+                dal.UpdateClient(dal.GetClientById(model.clientId), newClient);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
     }
 }

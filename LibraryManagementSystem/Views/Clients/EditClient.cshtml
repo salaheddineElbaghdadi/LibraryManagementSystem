@@ -1,0 +1,64 @@
+﻿@model LibraryManagementSystem.ViewModels.Clients.EditClientViewModel
+
+@{
+    ViewBag.Title = "EditClient";
+}
+
+<h2>Edit Client</h2>
+
+@using (Html.BeginForm("EditClient", "Clients", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>EditClientViewModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class= ="form-group">
+        @Html.Label("First Name")
+        @Html.TextBoxFor(model => model.client.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.client.FirstName, String.Empty, new { @class = "invalid-message" })
+    </div>
+
+    <div class= ="form-group">
+        @Html.Label("Last Name")
+        @Html.TextBoxFor(model => model.client.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.client.LastName, String.Empty, new { @class = "invalid-message" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("CIN")
+        @Html.TextBoxFor(model => model.client.CIN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.client.CIN, String.Empty, new { @class = "invalid-message" })
+        @if (Model.alreadyExists)
+        {
+            <text>
+                @Html.ValidationMessage("CIN", "CIN already used", new { @class = "invalid-message" })
+            </text>
+        }
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Category")
+        @Html.DropDownListFor(model => model.SelectedCategoryId, Model.CategorySelection, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.SelectedCategoryId, String.Empty, new { @class = "invalid-message" })
+    </div>
+
+    <div class= ="form-group">
+        @Html.Label("Email")
+        @Html.TextBoxFor(model => model.client.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.client.Email, String.Empty, new { @class = "invalid-message" })
+    </div>
+
+    @Html.HiddenFor(model => model.clientId)
+    @Html.HiddenFor(model => model.oldCIN)
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

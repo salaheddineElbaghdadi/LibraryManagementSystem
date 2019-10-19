@@ -262,6 +262,7 @@
     <Compile Include="ViewModels\ClientCategories\CreateNewCategoryViewModel.cs" />
     <Compile Include="ViewModels\Clients\ClientsViewModel.cs" />
     <Compile Include="ViewModels\Clients\CreateNewClientViewModel.cs" />
+    <Compile Include="ViewModels\Clients\EditClientViewModel.cs" />
     <Compile Include="ViewModels\Loans\AddLoanViewModel.cs" />
     <Compile Include="ViewModels\Loans\EditLoanViewModel.cs" />
     <Compile Include="ViewModels\Loans\LoansViewModel.cs" />
@@ -400,6 +401,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Loans\EditLoan.cshtml" />
     <Content Include="Views\Books\EditBook.cshtml" />
+    <Content Include="Views\Clients\EditClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
