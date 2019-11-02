@@ -42,7 +42,6 @@
             <td>@loan.EndDate</td>
             <td>
                 @Html.ActionLink("Edit", "EditLoan", new { clientId = loan.ClientId, bookId = loan.BookId}) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new {/* id = book.Id*/ }, new { onclick = "return confirm('Are you sure you want to delete?');" })
             </td>
         @:</tr>

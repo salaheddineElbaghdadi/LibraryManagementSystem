@@ -260,6 +260,7 @@
     <Compile Include="ViewModels\Books\SearchBookViewModel.cs" />
     <Compile Include="ViewModels\ClientCategories\ClientCategoriesViewModel.cs" />
     <Compile Include="ViewModels\ClientCategories\CreateNewCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ClientCategories\EditClientCategoryViewModel.cs" />
     <Compile Include="ViewModels\Clients\ClientsViewModel.cs" />
     <Compile Include="ViewModels\Clients\CreateNewClientViewModel.cs" />
     <Compile Include="ViewModels\Clients\EditClientViewModel.cs" />
@@ -402,6 +403,7 @@
     <Content Include="Views\Loans\EditLoan.cshtml" />
     <Content Include="Views\Books\EditBook.cshtml" />
     <Content Include="Views\Clients\EditClient.cshtml" />
+    <Content Include="Views\ClientCategories\EditClientCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

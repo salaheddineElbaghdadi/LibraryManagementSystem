@@ -39,7 +39,6 @@
         <td>@book.Archived</td>
         <td>
             @Html.ActionLink("Edit", "EditBook", new { id = book.Id}) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { id = book.Id }, new { onclick = "return confirm('Are you sure you want to delete?');" })
         </td>
     </tr>

@@ -48,5 +48,40 @@ namespace LibraryManagementSystem.Controllers
 
             return View("Index", new ClientCategoriesViewModel { ClientCategoies = dal.GetClientCategories() });
         }
+
+
+        [HttpGet]
+        public ActionResult EditClientCategory(int id)
+        {
+            LibraryDal dal = new LibraryDal();
+            EditClientCategoryViewModel model = new EditClientCategoryViewModel();
+
+            model.clientCategory = dal.GetClientCategory(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditClientCategory(EditClientCategoryViewModel model)
+        {
+            LibraryDal dal = new LibraryDal();
+
+            
+
+            if (ModelState.IsValid)
+            {
+                ClientCategory newCategroy = new ClientCategory
+                {
+                    ClientCategoryName = model.clientCategory.ClientCategoryName,
+                    LoanDuration = model.clientCategory.LoanDuration,
+                    MaxLoans = model.clientCategory.MaxLoans
+                };
+
+                dal.UpdateClientCategory(dal.GetClientCategory(model.id), newCategroy);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
     }
 }
