@@ -7,6 +7,15 @@
 
 <h2>Loans</h2>
 
+<p>
+    @using (Html.BeginForm("Index", "Loans", FormMethod.Get))
+    {
+    <p>
+        @Html.TextBox("searchString", "Title/ISBN/Name/CIN")
+        <input type="submit" value="search"/>
+    </p>
+    }
+</p>
 
 <table class="table">
     <tr>

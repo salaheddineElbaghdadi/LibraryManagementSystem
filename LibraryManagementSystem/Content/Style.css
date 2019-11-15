@@ -45,8 +45,7 @@ html, body {
     width: 85%;
 }
 
-button {
-    width: 30px;
-    height: 30px;
-    background: black;
+.submitButton {
+    width: 100px;
+    height: 40px;
 }

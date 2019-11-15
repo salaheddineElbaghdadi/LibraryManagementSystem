@@ -11,12 +11,13 @@ namespace LibraryManagementSystem.Controllers
     public class LoansController : Controller
     {
         // GET: Loans
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             LibraryDal dal = new LibraryDal();
             LoansViewModel model = new LoansViewModel();
 
             model.Loans = dal.LoansList();
+            model.Loans = model.Loans.OrderByDescending(l => l.StartDate).ToList();
             model.BookTitles = new List<string>();
             model.ClientsFirstNames = new List<string>();
             model.ClientsLastNames = new List<string>(); 
@@ -28,6 +29,15 @@ namespace LibraryManagementSystem.Controllers
                 model.BookTitles.Add(book.Title);
                 model.ClientsFirstNames.Add(client.FirstName);
                 model.ClientsLastNames.Add(client.LastName);
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model.Loans = model.Loans.Where(l => dal.GetBookById(l.BookId).Title.Contains(searchString) ||
+                    dal.GetBookById(l.BookId).ISBN.Contains(searchString) ||
+                    dal.GetClientById(l.ClientId).FirstName.Contains(searchString) ||
+                    dal.GetClientById(l.ClientId).LastName.Contains(searchString) ||
+                    dal.GetClientById(l.ClientId).CIN.Contains(searchString)).ToList();
             }
 
             return View(model);
